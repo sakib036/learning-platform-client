@@ -1,16 +1,16 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import igoPic from '../../assets/Images/login.jpg'
-// import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Login = () => {
     const [error, setError] = useState('');
     const { signIn, setLoading } = useContext(AuthContext);
-    // const navigate = useNavigate();
-    // const location = useLocation();
+    const navigate = useNavigate();
+    const location = useLocation();
 
-    // const from = location.state?.from?.pathname || '/';
+    const from = location.state?.from?.pathname || '/';
 
     const handelLog = (e) => {
         e.preventDefault();
@@ -25,6 +25,7 @@ const Login = () => {
                 console.log(user);
                 form.reset();
                 setError('');
+                navigate(from, {replace: true});
                 
             })
             .catch(error => {

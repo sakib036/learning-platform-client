@@ -7,6 +7,7 @@ import Home from './Pages/Home/Home';
 import Blog from './Pages/Blog/Blog';
 import Register from './Pages/Register/Register';
 import Login from './Pages/Login/Login';
+import PrivateRoutes from './PrivateRotes/PrivateRoutes';
 
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
         },
         {
           path:'/blog',
-          element:<Blog></Blog>,
+          element:<PrivateRoutes><Blog></Blog></PrivateRoutes>,
         },
         {
           path:'/register',
