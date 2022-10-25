@@ -8,6 +8,8 @@ import Blog from './Pages/Blog/Blog';
 import Register from './Pages/Register/Register';
 import Login from './Pages/Login/Login';
 import PrivateRoutes from './PrivateRotes/PrivateRoutes';
+import Courses from './Pages/Courses/Courses';
+import FAQ from './Pages/FAQ/FAQ';
 
 
 function App() {
@@ -23,6 +25,14 @@ function App() {
         {
           path:'/',
           element:<Home></Home>,
+        },
+        {
+          path:'/courses',
+          element:<Courses></Courses>
+        },
+        {
+          path:'/faq',
+          element:<FAQ></FAQ>
         },
         {
           path:'/blog',
