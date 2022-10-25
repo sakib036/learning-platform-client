@@ -1,16 +1,16 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import igoPic from '../../assets/Images/login.jpg'
-import { useLocation, useNavigate } from 'react-router-dom';
+// import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Login = () => {
     const [error, setError] = useState('');
     const { signIn, setLoading } = useContext(AuthContext);
-    const navigate = useNavigate();
-    const location = useLocation();
+    // const navigate = useNavigate();
+    // const location = useLocation();
 
-    const from = location.state?.from?.pathname || '/';
+    // const from = location.state?.from?.pathname || '/';
 
     const handelLog = (e) => {
         e.preventDefault();
@@ -54,10 +54,11 @@ const Login = () => {
                                 <span className="label-text text-white">Password</span>
                             </label>
                             <input type="password"name='password' placeholder="password" className="input input-bordered" />
+                            <div className='text-red-500 bg-gray-800 rounded-xl'>{error}</div>
                             <label className="label">
                                 <Link href="#" className="label-text-alt link link-hover text-white">Forgot password?</Link>
                             </label>
-                            {/* <div>{error}</div> */}
+                           
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>

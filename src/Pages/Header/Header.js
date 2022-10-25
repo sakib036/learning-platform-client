@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/Images/3778120.png'
+import { FaUser } from 'react-icons/fa';
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 
 const Header = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+    console.log(user?.email)
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
+
+
     return (
         <div>
             <div className="navbar bg-gray-500 text-white d-flex justify-evenly">
@@ -29,7 +42,40 @@ const Header = () => {
                         <li><NavLink to='/home'>Home</NavLink></li>
                         <li><NavLink to='/blog'>Blog</NavLink></li>
                         <li><NavLink to='/register'>Register</NavLink></li>
-                        <li><NavLink to='/login'>Login</NavLink></li>
+                        <li>
+                        <>
+                            {
+                                user?.uid ?
+                                    <>
+                                        <span>{user?.displayName}</span>
+                                        <span><span> {user?.photoURL ?
+                                            <img
+                                                style={{ height: '30px' }}
+                                                roundedCircle
+                                                src={user?.photoURL} alt=''>
+                                            </img>
+                                            : <FaUser></FaUser>
+                                        }</span></span>
+                                        <button onClick={handleLogOut} className="btn btn-active btn-primary">LogOut</button>
+                                    
+                                    </>
+                                    :
+                                    <>
+                                        <NavLink to='/login'>Login</NavLink>
+                                       
+                                    </>
+                            }
+
+
+                        </>
+                        </li>
+
+
+
+
+
+
+                      
                     </ul>
                 </div>
                 
