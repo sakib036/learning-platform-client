@@ -10,6 +10,7 @@ import Login from './Pages/Login/Login';
 import PrivateRoutes from './PrivateRotes/PrivateRoutes';
 import Courses from './Pages/Courses/Courses';
 import FAQ from './Pages/FAQ/FAQ';
+import Category from './Pages/Category/Category';
 
 
 function App() {
@@ -33,6 +34,12 @@ function App() {
           element:<Courses></Courses>,
           loader:()=>fetch('http://localhost:5000/courses'),
         },
+        {
+          path:'/Category/:id',
+          element:<Category></Category>,
+          loader: ({params})=> fetch(`http://localhost:5000/category/${params.id}`)
+
+      },
         {
           path:'/faq',
           element:<FAQ></FAQ>

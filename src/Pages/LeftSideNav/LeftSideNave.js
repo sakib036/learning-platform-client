@@ -18,7 +18,7 @@ const LeftSideNave = () => {
             <h1>Total No of Category {categories.length}</h1>
            <div className='text-white p-6 border-amber-500'>
            {
-                categories.map(category=><p className='border-2 border-amber-500 p-3 rounded-xl mt-2' key={category.id} category={category.title}><Link to={`/category/${category.id}`}>{category.title}</Link>
+                categories.map(category=><p className='border-2 border-amber-500 p-3 rounded-xl mt-2' key={category.id}><Link to={`/category/${category.id}`}>{category.title}</Link>
                 </p>)
             }
            </div>
