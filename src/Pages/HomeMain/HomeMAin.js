@@ -2,14 +2,16 @@ import React from 'react';
 import CardSide from '../CardSide/CardSide';
 import LeftSideNave from '../LeftSideNav/LeftSideNave';
 
-const HomeMAin = () => {
+
+const HomeMAin = ({courses}) => {
+    console.log(courses)
     return (
-        <div className='grid grid-cols-3 gap-4'>
+        <div className='md:grid grid-cols-3 gap-4'>
             <div>
                 <LeftSideNave></LeftSideNave>
             </div>
             <div className='col-span-2'>
-                <CardSide></CardSide>
+                <CardSide courses={courses}> </CardSide>
             </div>
         </div>
     );

@@ -1,9 +1,14 @@
 import React from 'react';
+import SingleCourse from '../SingleCourse/SingleCourse';
 
-const CardSide = () => {
+const CardSide = ({courses}) => {
     return (
-        <div>
-            <h1>Card Side</h1>
+        <div className='grid grid-cols-2 gap-4'>
+           
+            {
+                courses.map(course=><SingleCourse key={course.id} course={course}></SingleCourse>)
+            }
+            
         </div>
     );
 };

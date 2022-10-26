@@ -49,12 +49,7 @@ const Header = () => {
                                     <>
                                         <span>{displayName&& user?.displayName}</span>
                                         <span onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}> {user?.photoURL ?
-                                            <img
-                                                style={{ height: '30px' }}
-                                                roundedCircle
-                                                src={user?.photoURL} alt=''>
-                                            </img>
-                                            : <FaUser></FaUser>
+                                        <img className="inline-block h-12 w-12 rounded-full ring-2 ring-white" src={user?.photoURL} alt=''/>: <FaUser></FaUser>
                                         }</span>
                                         <button onClick={handleLogOut} className="btn btn-active btn-primary">LogOut</button>
                                     
@@ -87,13 +82,8 @@ const Header = () => {
                                 user?.uid ?
                                     <>
                                         <span>{displayName&& user?.displayName}</span>
-                                        <span onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}> {user?.photoURL ?
-                                            <img
-                                                style={{ height: '30px' }}
-                                                roundedCircle
-                                                src={user?.photoURL} alt=''>
-                                            </img>
-                                            : <FaUser></FaUser>
+                                        <span onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className='p-0'> {user?.photoURL ?
+                                        <img className="rounded-full w-12 h-12 " src={user?.photoURL} alt=''/>: <FaUser></FaUser>
                                         }</span>
                                         <button onClick={handleLogOut} className="btn btn-active btn-primary">LogOut</button>
                                     

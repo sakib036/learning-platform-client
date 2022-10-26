@@ -21,14 +21,17 @@ function App() {
         {
           path:'/home',
           element:<Home></Home>,
+          loader:()=>fetch('http://localhost:5000/courses'),
         },
         {
           path:'/',
           element:<Home></Home>,
+          loader:()=>fetch('http://localhost:5000/courses'),
         },
         {
           path:'/courses',
-          element:<Courses></Courses>
+          element:<Courses></Courses>,
+          loader:()=>fetch('http://localhost:5000/courses'),
         },
         {
           path:'/faq',
@@ -51,7 +54,7 @@ function App() {
   ]);
   return (
    
-    <div className="App">
+    <div>
       <RouterProvider router={router} ></RouterProvider>
    
     </div>

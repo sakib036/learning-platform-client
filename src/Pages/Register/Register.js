@@ -17,7 +17,7 @@ const Register = () => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
-        const photo = form.photo.value;
+        const photoURL = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
         console.log(name, email, password)
@@ -28,7 +28,7 @@ const Register = () => {
                 console.log(user);
                 setError('');
                 form.reset();
-                handleUpdateUserProfile(name, photo);
+                handleUpdateUserProfile(name, photoURL);
 
             })
             .catch(e => {
@@ -36,10 +36,10 @@ const Register = () => {
                 setError(e.message);
             });
 
-        const handleUpdateUserProfile = (name, photo) => {
+        const handleUpdateUserProfile = (name, photoURL) => {
             const profile = {
                 displayName: name,
-                photoURL: photo
+                photoURL: photoURL,
             }
 
             updateUserProfile(profile)
@@ -80,7 +80,7 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text text-white">Password</span>
                             </label>
-                            <input type="text" name='password' placeholder="password" className="input input-bordered" />
+                            <input type="password" name='password' placeholder="password" className="input input-bordered" />
 
                             <div className="text-danger">
                                 {error}
