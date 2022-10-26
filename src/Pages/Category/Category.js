@@ -1,9 +1,10 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Category = () => {
     const course = useLoaderData();
-    const { title, picture, description, details, language, cordinator } = course;
+    const { title, picture, description, details, language, cordinator,id } = course;
     return (
         <div>
             <div className="card card-compact my-10 md:w-2/3 mx-auto bg-base-100 shadow-xl">
@@ -18,6 +19,7 @@ const Category = () => {
                     <div >
                         <p>{details}</p>
                     </div>
+                    <Link to ={`/category/checkout/${id}`}><button className="btn btn-wide">Premium Access to Get Offer</button></Link>
                 </div>
             </div>
         </div>

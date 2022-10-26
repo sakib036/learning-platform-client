@@ -11,6 +11,7 @@ import PrivateRoutes from './PrivateRotes/PrivateRoutes';
 import Courses from './Pages/Courses/Courses';
 import FAQ from './Pages/FAQ/FAQ';
 import Category from './Pages/Category/Category';
+import Checkout from './Pages/Checkout/Checkout';
 
 
 function App() {
@@ -35,9 +36,15 @@ function App() {
           loader:()=>fetch('http://localhost:5000/courses'),
         },
         {
-          path:'/Category/:id',
+          path:'/category/:id',
           element:<Category></Category>,
           loader: ({params})=> fetch(`http://localhost:5000/category/${params.id}`)
+
+      },
+        {
+          path:'/category/checkout/:id',
+          element:<PrivateRoutes><Checkout></Checkout></PrivateRoutes>,
+          loader: ({params})=> fetch(`http://localhost:5000/category/checkout/${params.id}`)
 
       },
         {
