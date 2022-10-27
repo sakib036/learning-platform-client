@@ -11,8 +11,10 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+   
 
     const providerLogIn = (provider) => {
+      
         setLoading(true);
         return signInWithPopup(auth, provider)
     }
@@ -56,7 +58,9 @@ const AuthProvider = ({ children }) => {
         logOut, 
         updateUserProfile,
         createUser, 
-        signIn 
+        signIn ,
+       
+    
     };
 
     return (
