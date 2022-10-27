@@ -4,7 +4,7 @@ import LeftSideNave from '../LeftSideNav/LeftSideNave';
 
 
 const HomeMAin = ({courses}) => {
-    console.log(courses)
+  
     return (
         <div className='md:grid grid-cols-3 gap-4'>
             <div>
