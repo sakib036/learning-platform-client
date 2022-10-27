@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import igoPic from '../../assets/Images/login.jpg'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GoogleAuthProvider,GithubAuthProvider } from 'firebase/auth';
 
 const Login = () => {
-    const { signIn, setLoading, providerLogIn } = useContext(AuthContext);
+    const { signIn, setLoading, providerLogIn,providerGitLogIn } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -19,6 +20,21 @@ const Login = () => {
 
     const handleGoogleLogIn = () => {
         providerLogIn(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+               
+
+            })
+            .catch(error => {
+                console.error(error)
+                setError(error.message);
+            })
+            
+
+    }
+    const handelGit= () => {
+        providerGitLogIn(githubProvider)
             .then(result => {
                 const user = result.user;
                 console.log(user)
@@ -99,7 +115,7 @@ const Login = () => {
                             <div>
                                 <button onClick={handleGoogleLogIn} className="btn btn-error my-2 mx-2">Log In With Google</button>
 
-                                <button className="btn btn-error">Log In With GitHub</button>
+                                <button onClick={handelGit} className="btn btn-error">Log In With GitHub</button>
                             </div>
                         </form>
                     </div>
