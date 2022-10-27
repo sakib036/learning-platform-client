@@ -3,21 +3,37 @@ import { Link } from 'react-router-dom';
 import igoPic from '../../assets/Images/login.jpg'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
     const [error, setError] = useState('');
-    const { signIn, setLoading } = useContext(AuthContext);
+    const { signIn, setLoading, providerLogIn } = useContext(AuthContext); 
+    const googleProvider=new GoogleAuthProvider();
+
+    const handleGoogleLogIn=()=>{
+        providerLogIn(googleProvider)
+        .then(result=>{
+            const user=result.user;
+            console.log(user)
+        })
+        .catch(error=>{
+            console.error(error)
+        })
+
+    }
     const navigate = useNavigate();
     const location = useLocation();
 
     const from = location.state?.from?.pathname || '/';
+    
+   
 
     const handelLog = (e) => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
+       
 
         signIn(email, password)
             .then(result => {
@@ -42,9 +58,10 @@ const Login = () => {
                 <div className="hero-overlay bg-opacity-60"></div>
 
 
-                <form onSubmit={handelLog} className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100 ">
+                <div className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100 ">
                     <div className="card-body bg-center" style={{ backgroundImage: `url(${igoPic})` }}>
-                        <div className="form-control">
+                       <form onSubmit={handelLog} >
+                       <div className="form-control">
                             <label className="label">
                                 <span className="label-text text-white">Email</span>
                             </label>
@@ -63,15 +80,22 @@ const Login = () => {
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>
+                            <div>
+                               
                             <label className="form-control mt-6">
                                 <h1 className='font-bold text-white'>Have'n Account Please <Link to="/login" className='border-2 border-amber-200 px-2 rounded-xl  bg-amber-500'>REGISTER</Link> First</h1>
 
-                            </label>
+                            </label>  
+                                </div>            
                         </div>
+                        <div>
+                        <button onClick={handleGoogleLogIn} className="btn btn-error my-2 mx-2">Log In With Google</button>
+                        
+                            <button className="btn btn-error">Log In With GitHub</button>
+                        </div>
+                       </form>
                     </div>
-
-
-                </form>
+                </div>
             </div>
         </div>
     );

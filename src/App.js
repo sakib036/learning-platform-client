@@ -12,6 +12,7 @@ import Courses from './Pages/Courses/Courses';
 import FAQ from './Pages/FAQ/FAQ';
 import Category from './Pages/Category/Category';
 import Checkout from './Pages/Checkout/Checkout';
+import NotFound from './Pages/NotFound/NotFound';
 
 
 function App() {
@@ -23,28 +24,28 @@ function App() {
         {
           path:'/home',
           element:<Home></Home>,
-          loader:()=>fetch('http://localhost:5000/courses'),
+          loader:()=>fetch('https://top-techedu-server.vercel.app/courses'),
         },
         {
           path:'/',
           element:<Home></Home>,
-          loader:()=>fetch('http://localhost:5000/courses'),
+          loader:()=>fetch('https://top-techedu-server.vercel.app/courses'),
         },
         {
           path:'/courses',
           element:<Courses></Courses>,
-          loader:()=>fetch('http://localhost:5000/courses'),
+          loader:()=>fetch('https://top-techedu-server.vercel.app/courses'),
         },
         {
           path:'/category/:id',
           element:<Category></Category>,
-          loader: ({params})=> fetch(`http://localhost:5000/category/${params.id}`)
+          loader: ({params})=> fetch(`https://top-techedu-server.vercel.app/category/${params.id}`)
 
       },
         {
           path:'/category/checkout/:id',
           element:<PrivateRoutes><Checkout></Checkout></PrivateRoutes>,
-          loader: ({params})=> fetch(`http://localhost:5000/category/checkout/${params.id}`)
+          loader: ({params})=> fetch(`https://top-techedu-server.vercel.app/category/checkout/${params.id}`)
 
       },
         {
@@ -62,6 +63,10 @@ function App() {
         {
           path:'/login',
           element:<Login></Login>
+        },
+        {
+          path:'/*',
+          element:<NotFound></NotFound>
         },
       ]
     }

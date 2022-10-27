@@ -82,9 +82,7 @@ const Register = () => {
                             </label>
                             <input type="password" name='password' placeholder="password" className="input input-bordered" />
 
-                            <div className="text-danger">
-                                {error}
-                            </div>
+                            <div className='text-red-500 bg-gray-800 rounded-xl'>{error}</div>
 
                         </div>
                         <div className="form-control mt-6">

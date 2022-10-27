@@ -83,7 +83,7 @@ const Header = () => {
                                     <>
                                         <span>{displayName&& user?.displayName}</span>
                                         <span onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className='p-0'> {user?.photoURL ?
-                                        <img className="rounded-full w-12 h-12 " src={user?.photoURL} alt=''/>: <FaUser></FaUser>
+                                        <img className="rounded-full w-12 h-12 mx-2" src={user?.photoURL} alt=''/>: <FaUser></FaUser>
                                         }</span>
                                         <button onClick={handleLogOut} className="btn btn-active btn-primary">LogOut</button>
                                     
