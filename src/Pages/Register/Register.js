@@ -49,10 +49,18 @@ const Register = () => {
 
     }
 
+    const [toggle, setToggle]=useState(true);
+    const handelToggle=()=>{
+        setToggle(!toggle)
+    }
+    
+
 
     return (
         <div>
-            <div className="hero min-h-screen" style={{ backgroundImage: `url(${regpic})` }}>
+            <div className=' bg-gray-500 flex justify-center'><input type="checkbox" className="toggle toggle-lg "  onClick={()=>handelToggle()} /></div>
+            <div className={toggle?"hero min-h-screen bg-white":"hero min-h-screen bg-black"} >
+                
                 <div className="hero-overlay bg-opacity-60"></div>
 
 
